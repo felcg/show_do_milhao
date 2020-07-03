@@ -1,0 +1,28 @@
+.valores {
+    display: flex;
+    justify-content: space-evenly;
+
+    &__bloco {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        h2 {
+            color: #a40802;
+            background: #fbe40f;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            font-size: 20px;
+            text-align: center;
+            width: 100px;
+            padding: 2px;
+        }
+
+        h3 {
+            color: white;
+            text-transform: uppercase;
+            font-size: 22px;
+        }
+    }
+}
