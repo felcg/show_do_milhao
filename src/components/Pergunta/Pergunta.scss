@@ -1,5 +1,5 @@
 .jogoContainer {
-    padding-top: 5rem;
+    padding-top: 1rem;
 }
 
 .questao {
@@ -109,4 +109,31 @@
         background: #d02206;
         box-shadow: 0px 2px 0px 0px #6f0e0e;
     }
+
+    &__valorAtual {
+        text-transform: none;
+    }
 }
+
+
+
+.timer {
+    margin-bottom: 1rem;
+
+    #timer {
+        color: white;
+        text-align: center;
+        font-size: 18px;
+    }
+}
+
+.progress {
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 1rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
