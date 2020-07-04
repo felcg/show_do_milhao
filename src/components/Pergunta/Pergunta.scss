@@ -13,7 +13,7 @@
         margin-left: -2rem;
         margin-bottom: 1rem;
         border-radius: 0.5rem;
-        height: 200px;
+        height: 160px;
         display: flex;
         align-items: center;
     }
@@ -25,6 +25,12 @@
         padding: .5rem;
         border: 1px solid white;
         border-radius: .5rem;
+
+        &--desabilitada {
+            pointer-events: none;
+            background: #5a5a5a;
+            color: #dedede;
+        }
 
         span {
             background: white;
@@ -39,7 +45,7 @@
     }
 }
 
-.confirmacao {
+.confirmacao, .aviso, .genios, .placas, .cartas {
     background: white;
     text-align: center;
     padding: 2rem;
@@ -63,18 +69,48 @@
         margin-top: 1rem;
         width: 200px;
         border-radius: 2rem;
+
+        &--confirmar {
+            background: #238801;
+            box-shadow: 0px 2px 0px 0px #003805;
+        }
+    
+        &--cancelar {
+            background: #d02206;
+            box-shadow: 0px 2px 0px 0px #6f0e0e;
+        }
+
+        &--escondido {
+            display: none;
+        }
     }
 
-    &__botao--confirmar {
-        background: #238801;
-        box-shadow: 0px 2px 0px 0px #003805;
-    }
 
-    &__botao--cancelar {
-        background: #d02206;
-        box-shadow: 0px 2px 0px 0px #6f0e0e;
+
+    &__escolhas {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        justify-items: center;
+
+        &__escolha {
+            font-size: 20px;
+            background: white;
+            height: 50px;
+            width: 50px;
+            color: #2196F3;
+            padding-top: .5rem;
+            border: 2px solid #2196F3;
+            font-weight: 500;
+
+            &--escondida {
+                display: none;
+            }
+        }
     }
 }
+
 
 .resultado {
     background: white;
@@ -98,24 +134,23 @@
         margin-top: 1rem;
         width: 200px;
         border-radius: 2rem;
-    }
 
-    &__botao--continuar {
-        background: #238801;
-        box-shadow: 0px 2px 0px 0px #003805;
-    }
+        &--continuar {
+            background: #238801;
+            box-shadow: 0px 2px 0px 0px #003805;
+        }
 
-    &__botao--parar {
-        background: #d02206;
-        box-shadow: 0px 2px 0px 0px #6f0e0e;
+        &--parar {
+            background: #d02206;
+            box-shadow: 0px 2px 0px 0px #6f0e0e;
+        }
     }
 
     &__valorAtual {
         text-transform: none;
+        color: #a9a9a9;
     }
 }
-
-
 
 .timer {
     margin-bottom: 1rem;
@@ -135,5 +170,54 @@
     font-size: 1rem;
     background-color: #e9ecef;
     border-radius: 0.25rem;
+}
+
+.decisoesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.decisoes {
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    }
+
+    &__quantidade {
+        position: fixed;
+        color: white;
+        background: #1da741;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        font-size: 13px;
+        align-self: flex-start;
+    }
+
+    &__imagem {
+        max-width: 40px;
+    }
+
+    &__texto {
+        color: white;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    
+    &__botao {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        background: #ffffffc2;
+        color: #000c69;
+        border: none;
+        font-weight: bolder;
+    }
 }
 
