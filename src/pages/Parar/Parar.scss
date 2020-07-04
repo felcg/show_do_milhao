@@ -1,0 +1,58 @@
+.telaParar {
+    padding-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__tituloContainer {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    &__emoji {
+        max-width: 50px;
+    }
+
+    &__titulo {
+        font-size: 16px;
+        color: white;
+        margin: 1rem;
+    margin-bottom: 0;
+        text-transform: uppercase;
+        font-weight: 600;
+        text-align: center;
+
+        span {
+            font-size: 30px;
+        }
+    }
+
+    &__imagem {
+        max-width: 350px;
+        margin: 1rem;
+    }
+
+    &__botao {
+        color: white;
+        padding: 1rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: none;
+        margin-top: 1rem;
+        width: 200px;
+        border-radius: 2rem;
+
+        &--voltar {
+            background: #d02206;
+            box-shadow: 0px 2px 0px 0px #6f0e0e;
+        }
+
+        &--jogarDeNovo {
+            background: #238801;
+            box-shadow: 0px 2px 0px 0px #003805;
+        }
+    }
+}
