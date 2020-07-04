@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { alteraValor } from '../../reducers/dinheiroReducer'
 import './Valores.scss'
 
 const Valores = () => {
   const [valores, setValores] = useState({ errar: 0, parar: 0, acertar: '1 Mil' })
   const dinheiro = useSelector((state) => state.dinheiro)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   const handleValores = (atual) => {
     const tratarNumero = (numero) => {
@@ -63,7 +67,12 @@ const Valores = () => {
     }
 
     if (atual === 500000) {
-      setValores(acertar(atual, 500000))
+      setValores({ errar: 0, parar: tratarNumero(atual), acertar: tratarNumero(1000000) })
+    }
+
+    if (atual === 1000000) {
+      history.push('/vitoria')
+      dispatch(alteraValor(0))
     }
   }
 
