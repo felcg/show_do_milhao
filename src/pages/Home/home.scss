@@ -36,9 +36,6 @@
     box-shadow: 0px 2px 0px 0px #003805;
     transition: transform .2s;
 
-    
-        
-
     &:focus {
         background: #238801;
         outline: none;
@@ -62,6 +59,44 @@
         border: none;
     }
 }
+
+.nome {
+    background: white;
+    text-align: center;
+    padding: 2rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+    max-width: 350px;
+
+    &__titulo {
+        font-size: 20px;
+        color: #2d3748;
+        font-weight: 600;
+    }
+}
+
+.nomeForm {
+    display: flex;
+    flex-direction: column;
+
+    &__inputText {
+        padding: .5rem;
+    }
+
+    &__erro {
+        align-self: flex-end;
+        font-size: 15px;
+        color: #4A5568;
+    }
+
+    &__inputBotao {
+        color: white;
+        margin-top: 1rem;
+        align-self: center;
+        max-width: 100px;
+    }
+}
+
 
 @media(min-width: 576px) {
     .container {
