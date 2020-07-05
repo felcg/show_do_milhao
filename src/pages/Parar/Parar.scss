@@ -18,7 +18,7 @@
         font-size: 16px;
         color: white;
         margin: 1rem;
-    margin-bottom: 0;
+        margin-bottom: 0;
         text-transform: uppercase;
         font-weight: 600;
         text-align: center;
@@ -31,6 +31,11 @@
     &__imagem {
         max-width: 350px;
         margin: 1rem;
+    }
+
+    &__botoes {
+        display: flex;
+        flex-direction: column;
     }
 
     &__botao {
@@ -54,5 +59,34 @@
             background: #238801;
             box-shadow: 0px 2px 0px 0px #003805;
         }
+    }
+}
+
+@media( min-width: 576px) {
+
+    .telaParar {
+
+        &__imagem {
+            max-width: 550px;
+        }
+
+        &__titulo {
+            font-size: 20px;
+        }
+
+        &__botoes {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__botao {
+            margin-right: 1rem;
+        }
+    }    
+}
+
+@media(min-width: 992px) {
+    .telaParar__imagem{
+        max-width: 700px;
     }
 }

@@ -1,0 +1,92 @@
+.ranking {
+    padding-top: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+
+    &__titulo {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 35px;
+        padding-left: 1rem;
+    }
+
+    &__fileira, &__fileira--campeao  {
+        display: flex;
+        justify-content: space-between;
+        color: #4A5568;
+        background: white;
+        border-radius: 10px;
+        padding: .2rem .7rem;
+        margin-bottom: 0.3rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        align-items: baseline;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        &--nome {
+            font-weight: 600;
+        }
+
+        &--posicao {
+            margin-right: 1rem;
+            color: white;
+            background: #88d1fc;
+            padding: .4rem .7rem;
+            border-radius: 5px;
+        }
+
+        &--valor {
+            margin-left: auto;
+            font-weight: lighter;
+        }
+    }
+
+    &__fileira--campeao  {
+        display: flex;
+        justify-content: space-between;
+        color: #4A5568;
+        background: white;
+        border-radius: 10px;
+        padding: .7rem;
+        margin-bottom: 0.3rem;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        align-items: center;
+    }
+
+    &__voltar {
+        margin-left: 15px;
+
+        .botao__jogar {
+            margin-top: 5px;
+            color: white;
+        }
+    }
+
+    &--vazio {
+        padding-top: 5rem;
+        max-width: 700px;
+        margin: 0 auto;
+
+        div {
+            background: white;
+            border-radius: 15px;
+            padding: .7rem;
+            margin: .7rem;    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            color: white;
+        }
+    }
+}
