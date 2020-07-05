@@ -1,11 +1,12 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 #root {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-image: linear-gradient(to right bottom, #000340, #000d54, #001269, #00177f, #001d95, #001c96, #011c96, #011b97, #001482, #000e6e, #00085b, #000048);
     height: 100vh;
 }
 
 .modal-content {
     border-radius: 1rem;
+    font-family: 'Inter', sans-serif;
 }
