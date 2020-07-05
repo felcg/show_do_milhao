@@ -1,5 +1,40 @@
 .jogoContainer {
     padding-top: 1rem;
+    max-width: 700px;
+}
+
+.nomeJogador {
+    color: white;
+    margin-left: -.5rem;
+    margin-bottom: .5rem;
+    font-size: 18px;
+
+    &__tag {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+.timer {
+    margin-bottom: .5rem;
+
+    #timer {
+        color: white;
+        text-align: center;
+        font-size: 18px;
+    }
+}
+
+.progress {
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 1rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
 }
 
 .questao {
@@ -17,6 +52,14 @@
         display: flex;
         align-items: center;
     }
+
+    &__titulo {
+        text-transform: uppercase;
+        font-weight: 600;
+        text-shadow: 2px 2px 2px #000000;
+        line-height: 1;
+        font-size: 25px;
+    }
     
     &__alternativa {
         color: white;
@@ -25,6 +68,7 @@
         padding: .5rem;
         border: 1px solid white;
         border-radius: .5rem;
+        cursor: pointer;
 
         &--desabilitada {
             pointer-events: none;
@@ -41,7 +85,10 @@
             border-radius: 50%;
             text-align: center;
             margin-right: 1rem;
+            font-size: 16px;
         }
+
+    
     }
 }
 
@@ -51,6 +98,7 @@
     padding: 2rem;
     margin: 0 auto;
     border-radius: 1rem;
+    max-width: 350px;
 
     &__titulo {
         color: black;
@@ -67,6 +115,7 @@
         font-weight: 600;
         border: none;
         margin-top: 1rem;
+        margin-right: 1rem;
         width: 200px;
         border-radius: 2rem;
 
@@ -85,12 +134,10 @@
         }
     }
 
-
-
     &__escolhas {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-column-gap: 10px;
+        grid-column-gap: 5px;
         grid-row-gap: 10px;
         justify-items: center;
 
@@ -103,14 +150,21 @@
             padding-top: .5rem;
             border: 2px solid #2196F3;
             font-weight: 500;
+            cursor: pointer;
+        }
+    }
 
-            &--escondida {
-                display: none;
-            }
+    .cartas__escolhas__escolha {
+        width: 65px;
+        height: 90px;
+        
+        &--escondida {
+            display: none;
+            max-width: 65px;
+            border: 1px solid black;
         }
     }
 }
-
 
 .resultado {
     background: white;
@@ -118,6 +172,9 @@
     padding: 2rem;
     margin: 0 auto;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__imagem {
         max-width: 200px;
@@ -152,30 +209,13 @@
     }
 }
 
-.timer {
-    margin-bottom: 1rem;
-
-    #timer {
-        color: white;
-        text-align: center;
-        font-size: 18px;
-    }
-}
-
-.progress {
-    display: flex;
-    height: 1.5rem;
-    overflow: hidden;
-    line-height: 0;
-    font-size: 1rem;
-    background-color: #e9ecef;
-    border-radius: 0.25rem;
-}
-
 .decisoesContainer {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .decisoes {
@@ -221,3 +261,41 @@
     }
 }
 
+
+@media (min-width: 768px)  {
+    .confirmacao, .aviso, .genios, .placas, .cartas {
+        max-width: none;
+
+        &__escolhas {
+    
+            &__escolha {
+                font-size: 40px;
+                background: white;
+                height: 100px;
+                width: 100px;
+                color: #2196F3;
+                padding-top: 1.3rem;
+                border: 2px solid #2196F3;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+        
+        .cartas__escolhas__escolha {
+            width: 95px;
+            height: 130px;
+            
+            &--escondida {
+                display: none;
+                max-width: 95px;
+                border: 1px solid black;
+            }
+        }
+    }
+    
+    .questao__alternativa {
+        font-size: 20px;
+    }
+
+  
+}

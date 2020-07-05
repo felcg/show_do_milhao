@@ -19,6 +19,10 @@ import placa from '../../assets/placas black.svg'
 import convidados from '../../assets/convidado black.svg'
 import pular from '../../assets/skip black.svg'
 import parar from '../../assets/stop black.svg'
+import rei from '../../assets/HEART-13-KING.svg'
+import um from '../../assets/HEART-1.svg'
+import dois from '../../assets/HEART-2.svg'
+import tres from '../../assets/HEART-3.svg'
 
 const Pergunta = () => {
   const [pergunta, setPergunta] = useState(null)
@@ -42,10 +46,12 @@ const Pergunta = () => {
   const [confirmaPararVisivel, setConfirmaPararVisivel] = useState(false)
   const [resultadoVisivel, setResultadoVisivel] = useState(false)
   const [ganhando, setGanhando] = useState()
-  const dinheiro = useSelector((state) => state.dinheiro)
-  const dispatch = useDispatch()
   const [tempo, setTempo] = useState(60)
   const [intervalo, setIntervalo] = useState()
+
+  const dinheiro = useSelector((state) => state.dinheiro)
+  const dispatch = useDispatch()
+  const jogador = useSelector((state) => state.nome)
 
   const pararTimer = () => {
     clearInterval(intervalo)
@@ -69,8 +75,6 @@ const Pergunta = () => {
     const pergunta = listaFinal.splice(num, 1)
     setPergunta(pergunta[0])
     setResposta(Number(pergunta[0].resposta))
-    pararTimer()
-    timer()
   }
 
   const handleGanharDinheiro = () => {
@@ -90,7 +94,7 @@ const Pergunta = () => {
       dispatch(alteraValor(dinheiro * 2))
     }
 
-    if (dinheiro > 50000 && dinheiro < 1000000) {
+    if (dinheiro > 50000 && dinheiro < 500000) {
       dispatch(alteraValor(dinheiro + 100000))
     }
 
@@ -113,6 +117,16 @@ const Pergunta = () => {
   }
 
   const handleProxima = () => {
+    getPergunta()
+    setResultadoVisivel(false)
+  }
+
+  const handleComecarDeNovo = () => {
+    dispatch(alteraValor(0))
+    setPulos(3)
+    setPlacas(1)
+    setCartas(1)
+    setGenios(1)
     getPergunta()
     setResultadoVisivel(false)
   }
@@ -210,12 +224,18 @@ const Pergunta = () => {
       })
     }
   }
+
   const handleCartas = () => {
     if (cartas === 0) {
       setAviso('Sua ajuda das Cartas acabou :(')
       setAvisoVisivel(true)
     } else {
-      const CartasArray = ['K', 'A', '2', '3']
+      const CartasArray = [
+        { str: 'K', img: rei },
+        { str: 'A', img: um },
+        { str: '2', img: dois },
+        { str: '3', img: tres },
+      ]
 
       setEscolhasCartas(shuffle(CartasArray))
       setCartas(cartas - 1)
@@ -224,12 +244,19 @@ const Pergunta = () => {
   }
 
   const escolheCarta = (e) => {
-    const carta = e.target.querySelector('p')
+    const div = e.target
+    div.style.border = 'none'
+    div.style.padding = '0'
+    const carta = e.target.querySelector('img')
     carta.style.display = 'block'
     const cartas = document.getElementsByClassName('cartas')[0]
     cartas.style.pointerEvents = 'none'
 
-    setCartaEscolhida(carta.innerHTML)
+    setInterval(() => {
+      setCartasVisivel(false)
+    }, 1000)
+
+    setCartaEscolhida(carta.dataset.str)
   }
 
   const checkResposta = () => {
@@ -247,13 +274,21 @@ const Pergunta = () => {
   }, [])
 
   useEffect(() => {
+    pararTimer()
+  }, [resultadoVisivel])
+
+  useEffect(() => {
+    pararTimer()
+    timer()
+  }, [pergunta])
+
+  useEffect(() => {
     if (pergunta !== null) {
       limparPerguntas(cartaEscolhida)
     }
   }, [cartaEscolhida])
 
   useEffect(() => {
-    pararTimer()
     if (confirma === true) {
       checkResposta()
       setConfirma(false)
@@ -264,6 +299,7 @@ const Pergunta = () => {
     <>
       <Container className="jogoContainer">
 
+        <div className="nomeJogador"><span className="nomeJogador__tag">Jogador(a):</span> {jogador} </div>
         <div className="timer">
           <ProgressBar>
             <ProgressBar now={tempo} max={60} variant="primary" label={`${tempo}s`} />
@@ -329,7 +365,7 @@ const Pergunta = () => {
 
       <Modal centered show={confirmaVisivel} onHide={() => setConfirmaVisivel(false)}>
         <div className="confirmacao">
-          <p className="confirmacao__titulo">Você está certo disso?</p>
+          <p className="confirmacao__titulo">Você está certo(a) disso, {jogador}?</p>
           <button className="confirmacao__botao confirmacao__botao--confirmar" onClick={() => handleConfirma(true)}>Sim</button>
           <button className="confirmacao__botao confirmacao__botao--cancelar" onClick={() => handleConfirma(false)}>Não</button>
         </div>
@@ -337,9 +373,9 @@ const Pergunta = () => {
 
       <Modal centered show={confirmaPararVisivel} onHide={() => setConfirmaPararVisivel(false)}>
         <div className="confirmacao">
-          <p className="confirmacao__titulo">Você está certo disso?</p>
+          <p className="confirmacao__titulo">Você está certo(a) disso, {jogador}?</p>
           <Link to="/parar">
-            <button className="confirmacao__botao confirmacao__botao--confirmar">Sim</button>
+            <button className="confirmacao__botao confirmacao__botao--confirmar" onClick={pararTimer}>Sim</button>
           </Link>
           <button className="confirmacao__botao confirmacao__botao--cancelar" onClick={() => setConfirmaPararVisivel(false)}>Não</button>
         </div>
@@ -352,7 +388,7 @@ const Pergunta = () => {
             <h3 className="resultado__titulo">Certa resposta!</h3>
             <img className="resultado__imagem" src={happyface} alt="emoji de rosto feliz" />
             <button className="resultado__botao resultado__botao--continuar" onClick={handleProxima}>Continuar</button>
-            <Link to="/parar"><button className="resultado__botao resultado__botao--parar">Parar</button></Link>
+            <Link to="/parar"><button className="resultado__botao resultado__botao--parar" onClick={pararTimer}>Parar</button></Link>
             <h5 className="resultado__valorAtual">(saia com R${dinheiro.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')})</h5>
           </div>
         )}
@@ -362,8 +398,8 @@ const Pergunta = () => {
             <div className="resultado">
               {tempo > 0 ? <h3 className="resultado__titulo">Resposta errada :(</h3> : <h3 className="resultado__titulo">O tempo acabou :(</h3>}
               <img className="resultado__imagem" src={sadface} alt="emoji de rosto triste" />
-              <button className="resultado__botao resultado__botao--continuar" onClick={handleProxima}>Começar novo jogo</button>
-              <Link to="/"><button className="resultado__botao resultado__botao--parar">Voltar para o início</button></Link>
+              <button className="resultado__botao resultado__botao--continuar" onClick={handleComecarDeNovo}>Começar novo jogo</button>
+              <Link to="/"><button className="resultado__botao resultado__botao--parar" onClick={pararTimer}>Voltar para o início</button></Link>
             </div>
           )}
 
@@ -402,15 +438,14 @@ const Pergunta = () => {
 
       <Modal centered show={cartasVisivel} onHide={() => setCartasVisivel(false)}>
         <div className="cartas">
-          <p className="cartas__titulo">Nossa plateia fez as seguites escolhas:</p>
+          <p className="cartas__titulo">{jogador}, escolha uma das cartas a seguir:</p>
           <div className="cartas__escolhas">
             {escolhasCartas.map((resposta) => (
-              <div onClick={(e) => escolheCarta(e)} role="button" aria-hidden key={resposta} className="cartas__escolhas__escolha">
-                <p className="cartas__escolhas__escolha--escondida">{resposta}</p>
+              <div onClick={(e) => escolheCarta(e)} role="button" aria-hidden key={resposta.str} className="cartas__escolhas__escolha">
+                <img className="cartas__escolhas__escolha--escondida" src={resposta.img} alt="circulo branco com letra x no meio" data-str={resposta.str} />
               </div>
             ))}
           </div>
-          <button className="cartas__botao cartas__botao--escondido" onClick={() => setCartasVisivel(false)}>Ok</button>
         </div>
       </Modal>
     </>
