@@ -1,4 +1,4 @@
-const listaPerguntas = []
+let listaPerguntas = []
 let listaAlternativas = []
 let listaRespostas = []
 
@@ -2408,18 +2408,44 @@ const respostasDificil = `3
 3
 3`
 
-perguntasDificil.split('?').map((pergunta) => listaPerguntas.push(`${pergunta}?`))
-listaPerguntas.pop()
+const preparaPerguntas = (dificuldade) => {
+  let listaFinal = []
+  let perguntasArray = []
+  let alternativasArray = []
+  let respostasArray = []
+  switch (dificuldade) {
+  case ('Fácil'):
+    perguntasArray = perguntasFacil
+    alternativasArray = alternativasFacil
+    respostasArray = respostasFacil
+    break
+  case ('Médio'):
+    perguntasArray = perguntasMedio
+    alternativasArray = alternativasMedio
+    respostasArray = respostasMedio
+    break
+  case ('Difícil'):
+    perguntasArray = perguntasDificil
+    alternativasArray = alternativasDificil
+    respostasArray = respostasDificil
+    break
+  default:
+  }
 
-listaAlternativas = alternativasDificil.split(/\n\s*\n/)
+  perguntasArray = perguntasArray.split('?')
+  listaPerguntas = perguntasArray.map((pergunta) => `${pergunta}?`)
+  listaPerguntas.pop()
 
-listaRespostas = respostasDificil.split(/\n/)
+  listaAlternativas = alternativasArray.split(/\n\s*\n/)
 
-console.log('lista', listaRespostas)
+  listaRespostas = respostasArray.split(/\n/)
 
-const listaFinal = listaPerguntas
-  .map((titulo, index) => ({
-    id: index, titulo, alternativas: listaAlternativas[index].split('\n'), resposta: listaRespostas[index],
-  }), this)
+  listaFinal = listaPerguntas
+    .map((titulo, index) => ({
+      id: index, titulo, alternativas: listaAlternativas[index].split('\n'), resposta: listaRespostas[index],
+    }))
 
-export default listaFinal
+  return listaFinal
+}
+
+export default preparaPerguntas

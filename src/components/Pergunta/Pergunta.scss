@@ -4,10 +4,20 @@
 }
 
 .nomeJogador {
-    color: white;
-    margin-left: -.5rem;
-    margin-bottom: .5rem;
+    color: black;
+    margin-left: -0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    padding: 0 2rem;
+    margin-bottom: 0.3rem;
+    margin-left: -2rem;
+    align-items: center;
+    display: inline-block;
+    background-image: linear-gradient(to right bottom, #931500, #a61801, #b91b01, #cd1e00, #e12100, #e12100, #e12100, #e12100, #cd1e00, #b91b01, #a61801, #931500);
+    border: 1px solid white;
+    text-shadow: 1px 1px 1px #000000;
 
     &__tag {
         color: white;
@@ -212,7 +222,7 @@
 .decisoesContainer {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;

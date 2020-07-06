@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container, Modal, ProgressBar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { alteraValor } from '../../reducers/dinheiroReducer'
-import listaFinal from './perguntasHelper'
+import adicionarAoRanking from '../../utils/adicionarAoRanking'
 import shuffle from '../../utils/shuffle'
 
 import Valores from '../Valores/Valores'
@@ -50,8 +50,10 @@ const Pergunta = () => {
   const [intervalo, setIntervalo] = useState()
 
   const dinheiro = useSelector((state) => state.dinheiro)
-  const dispatch = useDispatch()
+  const valorTimer = useSelector((state) => state.timer)
+  const perguntas = useSelector((state) => state.perguntas)
   const jogador = useSelector((state) => state.nome)
+  const dispatch = useDispatch()
 
   const pararTimer = () => {
     clearInterval(intervalo)
@@ -71,8 +73,8 @@ const Pergunta = () => {
   }
 
   const getPergunta = () => {
-    const num = Math.floor(Math.random() * listaFinal.length)
-    const pergunta = listaFinal.splice(num, 1)
+    const num = Math.floor(Math.random() * perguntas.length)
+    const pergunta = perguntas.splice(num, 1)
     setPergunta(pergunta[0])
     setResposta(Number(pergunta[0].resposta))
   }
@@ -269,6 +271,14 @@ const Pergunta = () => {
     }
   }
 
+  const checkTimer = () => {
+    if (valorTimer === false) {
+      pararTimer()
+    } else {
+      timer()
+    }
+  }
+
   useEffect(() => {
     getPergunta()
   }, [])
@@ -279,7 +289,7 @@ const Pergunta = () => {
 
   useEffect(() => {
     pararTimer()
-    timer()
+    checkTimer()
   }, [pergunta])
 
   useEffect(() => {
@@ -295,17 +305,28 @@ const Pergunta = () => {
     }
   }, [confirma])
 
+  useEffect(() => {
+    if (ganhando === false) {
+      adicionarAoRanking('ranking', { nome: jogador, valor: dinheiro })
+      dispatch(alteraValor(0))
+    }
+  }, [ganhando])
+
   return (
     <>
       <Container className="jogoContainer">
 
-        <div className="nomeJogador"><span className="nomeJogador__tag">Jogador(a):</span> {jogador} </div>
-        <div className="timer">
-          <ProgressBar>
-            <ProgressBar now={tempo} max={60} variant="primary" label={`${tempo}s`} />
-          </ProgressBar>
+        <div className="nomeJogador"><span className="nomeJogador__tag">Participante:</span> {jogador} </div>
 
-        </div>
+        {valorTimer
+        && (
+          <div className="timer">
+            <ProgressBar>
+              <ProgressBar now={tempo} max={60} variant="primary" label={`${tempo}s`} />
+            </ProgressBar>
+
+          </div>
+        ) }
 
         {pergunta != null
       && (
@@ -363,7 +384,7 @@ const Pergunta = () => {
         </div>
       </div>
 
-      <Modal centered show={confirmaVisivel} onHide={() => setConfirmaVisivel(false)}>
+      <Modal centered show={confirmaVisivel} backdrop="static" keyboard={false} onHide={() => setConfirmaVisivel(false)}>
         <div className="confirmacao">
           <p className="confirmacao__titulo">Você está certo(a) disso, {jogador}?</p>
           <button className="confirmacao__botao confirmacao__botao--confirmar" onClick={() => handleConfirma(true)}>Sim</button>
@@ -371,7 +392,7 @@ const Pergunta = () => {
         </div>
       </Modal>
 
-      <Modal centered show={confirmaPararVisivel} onHide={() => setConfirmaPararVisivel(false)}>
+      <Modal centered show={confirmaPararVisivel} backdrop="static" keyboard={false} onHide={() => setConfirmaPararVisivel(false)}>
         <div className="confirmacao">
           <p className="confirmacao__titulo">Você está certo(a) disso, {jogador}?</p>
           <Link to="/parar">
@@ -381,7 +402,7 @@ const Pergunta = () => {
         </div>
       </Modal>
 
-      <Modal centered show={resultadoVisivel} onHide={() => setResultadoVisivel(false)}>
+      <Modal centered show={resultadoVisivel} backdrop="static" keyboard={false} onHide={() => setResultadoVisivel(false)}>
 
         {ganhando === true && (
           <div className="resultado">
@@ -405,14 +426,14 @@ const Pergunta = () => {
 
       </Modal>
 
-      <Modal centered show={avisoVisivel} onHide={() => setAvisoVisivel(false)}>
+      <Modal centered show={avisoVisivel} backdrop="static" keyboard={false} onHide={() => setAvisoVisivel(false)}>
         <div className="aviso">
           <p className="aviso__titulo">{aviso}</p>
           <button className="aviso__botao aviso__botao--confirmar" onClick={() => setAvisoVisivel(false)}>Ok</button>
         </div>
       </Modal>
 
-      <Modal centered show={geniosVisivel} onHide={() => setGeniosVisivel(false)}>
+      <Modal centered show={geniosVisivel} backdrop="static" keyboard={false} onHide={() => setGeniosVisivel(false)}>
         <div className="genios">
           <p className="genios__titulo">Nossos Gênios conversaram e essas foram as escolhas feitas:</p>
           <div className="genios__escolhas">
@@ -424,7 +445,7 @@ const Pergunta = () => {
         </div>
       </Modal>
 
-      <Modal centered show={placasVisivel} onHide={() => setPlacasVisivel(false)}>
+      <Modal centered show={placasVisivel} backdrop="static" keyboard={false} onHide={() => setPlacasVisivel(false)}>
         <div className="placas">
           <p className="placas__titulo">Nossa plateia fez as seguites escolhas:</p>
           <div className="placas__escolhas">
@@ -436,7 +457,7 @@ const Pergunta = () => {
         </div>
       </Modal>
 
-      <Modal centered show={cartasVisivel} onHide={() => setCartasVisivel(false)}>
+      <Modal centered show={cartasVisivel} backdrop="static" keyboard={false} onHide={() => setCartasVisivel(false)}>
         <div className="cartas">
           <p className="cartas__titulo">{jogador}, escolha uma das cartas a seguir:</p>
           <div className="cartas__escolhas">
