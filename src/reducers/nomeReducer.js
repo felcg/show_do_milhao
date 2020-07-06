@@ -1,4 +1,4 @@
-const dinheiroReducer = (state = 'Jovem Gênio', action) => {
+const nomeReducer = (state = 'Jovem Gênio', action) => {
   switch (action.type) {
   case 'ALTERA_NOME':
     return action.nome
@@ -12,4 +12,4 @@ export const alteraNome = (nome) => ({
   nome,
 })
 
-export default dinheiroReducer
+export default nomeReducer
