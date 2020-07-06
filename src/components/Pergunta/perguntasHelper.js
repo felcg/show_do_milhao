@@ -915,7 +915,7 @@ Qual é o nome original do filme “O médico e o monstro”?
 
 Que atriz casou com Joe Dimaggio e Arthur Miller?
 
-Quem disse a fra“Vim, vi e venci”?
+Quem disse a frase: “Vim, vi e venci”?
 
 Que nome se dá à volta dos cardumes de peixes para a nascente do rio?
 
