@@ -82,7 +82,12 @@ const Home = () => {
           <p className="opcoes__titulo">Opções</p>
           <div className="opcoes__bloco">
             <p>Timer </p>
-            <Switch onChange={handleTimer} checked={timer} />
+            <Switch
+              onChange={handleTimer}
+              checked={timer}
+              offColor="#d02206"
+              onColor="#238801"
+            />
           </div>
           <div className="opcoes__bloco">
             <p>Dificuldade </p>
