@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/show_do_milhao/static/css/main.6db47593.chunk.css",
+    "main.js": "/show_do_milhao/static/js/main.4f8ffb21.chunk.js",
+    "main.js.map": "/show_do_milhao/static/js/main.4f8ffb21.chunk.js.map",
+    "runtime-main.js": "/show_do_milhao/static/js/runtime-main.76c8427f.js",
+    "runtime-main.js.map": "/show_do_milhao/static/js/runtime-main.76c8427f.js.map",
+    "static/js/2.ca449b3b.chunk.js": "/show_do_milhao/static/js/2.ca449b3b.chunk.js",
+    "static/js/2.ca449b3b.chunk.js.map": "/show_do_milhao/static/js/2.ca449b3b.chunk.js.map",
+    "index.html": "/show_do_milhao/index.html",
+    "precache-manifest.382c7bfbb6f2ad7ca7abc54cce041359.js": "/show_do_milhao/precache-manifest.382c7bfbb6f2ad7ca7abc54cce041359.js",
+    "service-worker.js": "/show_do_milhao/service-worker.js",
+    "static/css/main.6db47593.chunk.css.map": "/show_do_milhao/static/css/main.6db47593.chunk.css.map",
+    "static/js/2.ca449b3b.chunk.js.LICENSE.txt": "/show_do_milhao/static/js/2.ca449b3b.chunk.js.LICENSE.txt",
+    "static/media/HEART-1.svg": "/show_do_milhao/static/media/HEART-1.957a17ec.svg",
+    "static/media/HEART-13-KING.svg": "/show_do_milhao/static/media/HEART-13-KING.f031b4b1.svg",
+    "static/media/HEART-2.svg": "/show_do_milhao/static/media/HEART-2.980aeeb2.svg",
+    "static/media/HEART-3.svg": "/show_do_milhao/static/media/HEART-3.ba924297.svg",
+    "static/media/cartas black.svg": "/show_do_milhao/static/media/cartas black.19c6c6bc.svg",
+    "static/media/convidado black.svg": "/show_do_milhao/static/media/convidado black.dff7f894.svg",
+    "static/media/embarrassed.svg": "/show_do_milhao/static/media/embarrassed.cc422fe9.svg",
+    "static/media/happy.svg": "/show_do_milhao/static/media/happy.9e446e87.svg",
+    "static/media/logo.png": "/show_do_milhao/static/media/logo.0181037e.png",
+    "static/media/parar.jpg": "/show_do_milhao/static/media/parar.ef0abe78.jpg",
+    "static/media/placas black.svg": "/show_do_milhao/static/media/placas black.4cfc11b4.svg",
+    "static/media/skip black.svg": "/show_do_milhao/static/media/skip black.c2b9314f.svg",
+    "static/media/stop black.svg": "/show_do_milhao/static/media/stop black.7ef64d4a.svg",
+    "static/media/trophy.svg": "/show_do_milhao/static/media/trophy.d554d5ac.svg",
+    "static/media/vitoria.jpg": "/show_do_milhao/static/media/vitoria.d97cf27f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.76c8427f.js",
+    "static/js/2.ca449b3b.chunk.js",
+    "static/css/main.6db47593.chunk.css",
+    "static/js/main.4f8ffb21.chunk.js"
+  ]
+}
