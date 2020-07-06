@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './Valores.scss'
 
-const Valores = () => {
+const Valores = ({ pararTimer }) => {
   const [valores, setValores] = useState({ errar: 0, parar: 0, acertar: '1 Mil' })
   const dinheiro = useSelector((state) => state.dinheiro)
   const history = useHistory()
@@ -73,6 +73,7 @@ const Valores = () => {
     }
 
     if (atual === 1000000) {
+      pararTimer()
       history.push('/vitoria')
     }
   }

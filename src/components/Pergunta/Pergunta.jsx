@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-unused-expressions */
@@ -343,7 +344,7 @@ const Pergunta = () => {
         </div>
       )}
 
-        <Valores />
+        <Valores pararTimer={pararTimer} />
 
       </Container>
 
@@ -437,8 +438,8 @@ const Pergunta = () => {
         <div className="genios">
           <p className="genios__titulo">Nossos Gênios conversaram e essas foram as escolhas feitas:</p>
           <div className="genios__escolhas">
-            {respostasGenios.map((resposta) => (
-              <div className="genios__escolhas__escolha">{resposta}</div>
+            {respostasGenios.map((resposta, index) => (
+              <div key={index} className="genios__escolhas__escolha">{resposta}</div>
             ))}
           </div>
           <button className="genios__botao genios__botao--confirmar" onClick={() => setGeniosVisivel(false)}>Ok</button>
@@ -449,8 +450,8 @@ const Pergunta = () => {
         <div className="placas">
           <p className="placas__titulo">Nossa plateia fez as seguites escolhas:</p>
           <div className="placas__escolhas">
-            {respostasPlacas.map((resposta) => (
-              <div className="placas__escolhas__escolha">{resposta}</div>
+            {respostasPlacas.map((resposta, index) => (
+              <div key={index} className="placas__escolhas__escolha">{resposta}</div>
             ))}
           </div>
           <button className="placas__botao placas__botao--confirmar" onClick={() => setPlacasVisivel(false)}>Ok</button>
