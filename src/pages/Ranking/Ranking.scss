@@ -6,7 +6,7 @@
     &__titulo {
         color: #ffffff;
         font-weight: 600;
-        font-size: 35px;
+        font-size: 30px;
         padding-left: 1rem;
     }
 
@@ -40,7 +40,7 @@
 
         &--valor {
             margin-left: auto;
-            font-weight: lighter;
+            font-weight: 600;
         }
     }
 
@@ -87,6 +87,24 @@
 
         button {
             color: white;
+        }
+    }
+
+    &__bloco {
+        display: flex;
+        align-items: center;
+
+        .botao__voltar {
+            background: #d02206;
+            box-shadow: 0px 2px 0px 0px #6f0e0e;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            max-width: 200px;
+            text-align: center;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 1rem;
         }
     }
 }
